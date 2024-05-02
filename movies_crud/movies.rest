@@ -1,0 +1,21 @@
+
+GET http://localhost:8080/movies
+
+###
+DELETE http://localhost:8080/movies/2
+
+###
+GET http://localhost:8080/movies/2
+
+###
+PUT http://localhost:8080/movies/1
+Content-Type: application/json
+{
+
+  "isbn": "43820",
+  "title": "Movie Four",
+  "director": {
+    "firstname": "Johana",
+    "lastname": "Doe"
+  }
+}

@@ -2,10 +2,9 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
-)
+) 
 
 // Movie represents a movie data structure
 type Movie struct {

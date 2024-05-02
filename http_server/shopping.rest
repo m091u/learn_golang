@@ -1,0 +1,12 @@
+
+POST http://localhost:8080/shopping-items
+
+Content-Type: application/json
+{
+    "name": "pizza"
+}
+###
+
+
+
+GET http://localhost:8080/shopping-items
