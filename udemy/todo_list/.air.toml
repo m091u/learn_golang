@@ -1,0 +1,29 @@
+# .air.toml
+
+# Watching directories
+root = "."
+tmp_dir = "tmp"
+build_cmd = "go build -o ./tmp/main ."
+
+[build]
+  binary = "tmp/main"
+  exclude = [
+    "tmp/*",
+    "vendor/*",
+  ]
+
+[tool]
+  autobind = false
+  debug = false
+  poll_interval = 1000
+  clear_interval = 0
+  log_prefix = "air"
+  log_output = ""
+  log_time_format = "2006-01-02 15:04:05"
+  server_name = "air"
+  server_host = "localhost"
+  server_port = 8080
+  server_read_timeout = 10
+  server_write_timeout = 10
+  graceful_timeout = 15
+  kill_timeout = 10
