@@ -40,7 +40,6 @@ func getMovie(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-
 }
 
 func deleteMovie(w http.ResponseWriter, r *http.Request) {
@@ -65,25 +64,25 @@ func createMovie(w http.ResponseWriter, r *http.Request) {
 	_ = json.NewDecoder(r.Body).Decode(&movie)
 	movie.ID = strconv.Itoa(rand.Intn(1000000))
 	movies = append(movies, movie)
-	
+
 	json.NewEncoder(w).Encode(movie)
 }
 
 func updateMovie(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Contenet-Type", "application/json")
-	
+
 	params := mux.Vars(r)
+
+	var updatedMovie Movie
+
+	_ = json.NewDecoder(r.Body).Decode(&updatedMovie)
 
 	for i, item := range movies {
 
-		if item.ID == params["id"]{
-			movies = append(movies[:i], movies[i+1:]...)
-			
-			var movie Movie
-			_ = json.NewDecoder(r.Body).Decode(&movie)
-			movie.ID = params["id"]
-			movies = append(movies, movie)
-			json.NewEncoder(w).Encode(movie)
+		if item.ID == params["id"] {
+			movies[i] = updatedMovie
+			fmt.Fprintf(w, "The movie with id %v has been updated", params["id"])
+			json.NewEncoder(w).Encode(updatedMovie)
 			return
 		}
 	}

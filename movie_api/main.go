@@ -33,6 +33,7 @@ func getMovies(w http.ResponseWriter, r *http.Request) {
 	var data struct {
 		Search []Movie `json:"Search"`
 	}
+	
 	if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
